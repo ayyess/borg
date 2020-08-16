@@ -257,7 +257,7 @@ included in the returned value."
               (setcdr elt plist))))
         (cl-sort alist #'string< :key #'car))
     (let* ((default-directory borg-top-level-directory)
-           (prefix (file-relative-name borg-drones-directory))
+           (prefix (file-name-as-directory (file-relative-name borg-drones-directory)))
            (offset (+ (length prefix) 50)))
       (cl-mapcan (lambda (line)
                    (and (string-equal (substring line 50 offset) prefix)
